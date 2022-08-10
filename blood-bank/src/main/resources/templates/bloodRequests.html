@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Blood Requests</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+body{
+background-color:#948e8e;
+}
+</style>
+</head>
+<body>
+
+ <!-- <%@include file="navbar.jsp" %>  -->
+<div th:replace="navbar :: menu"></div>
+<div class="container p-5">
+<div th:if=${session.msg}>
+   <div class="alert alert-success" role="alert" th:text="${session.msg}"></div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     
+  </button>
+   <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+   </div>
+   <div class="text-center"><h4>Requests for blood</h4></div>
+     
+   <table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+         <th scope="col">Email</th>
+          <th scope="col">Blood Group</th>
+          <th scope="col">Contact Number</th>
+          <th scope="col">Done</th>
+          <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody style="background-color:white">
+  
+     
+    <tr th:each="bloodRequest : ${list}">
+       
+      <td th:text="${bloodRequest.id}">  </td>
+       <td th:text="${bloodRequest.fname}"> </td>
+       <td th:text="${bloodRequest.lname}"></td>
+      <td th:text="${bloodRequest.email}"></td>
+       <td th:text="${bloodRequest.bloodgrp}"></td>
+        <td th:text="${bloodRequest.cno}"></td>
+         
+          <td>
+          <form action="#" th:method="post" th:action="@{'/UpdateStatus/' +${bloodRequest.id}}">
+            <!-- <a class="btn btn-sm btn-primary" th:href="@{'/UpdateStatus/' +${bloodRequest.id}}">Done</a> -->
+            <button class="btn btn-primary  " type="submit">Done</button>
+            </form>
+            </td>
+            <td>
+            <a class="btn btn-sm btn-danger" th:href="@{'/deleteReq/' +${bloodRequest.id}}">Delete</a>
+          </td>
+    </tr>
+     
+  </tbody>
+</table>
+
+ 
+</div>
+</body>
+</html>

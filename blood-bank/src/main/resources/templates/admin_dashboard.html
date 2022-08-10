@@ -1,0 +1,51 @@
+ 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<title>Admin-Dashboard</title>
+
+<style>
+
+img{
+width:100%;
+height:550px;
+
+}
+
+body{
+background-color:#948e8e;
+}
+</style>
+
+</head>
+<body>
+<div th:replace="navbar :: menu"></div>
+
+<br>
+<div style="max-width:100%" class="col-8 d-flex justify-content-center" >
+  <img class="mySlides"    th:src="@{/images/welcome.jpg}"/>
+   <img class="mySlides"  th:src="@{/images/slide1.jpg}" />
+   <img class="mySlides"   th:src="@{/images/slide2.PNG}"/>
+</div>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+<br>
+
+</body>
+</html>

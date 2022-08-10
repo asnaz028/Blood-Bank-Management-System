@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title> Completed Blood Requests</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+body{
+background-color:#948e8e;
+}
+</style>
+</head>
+<body>
+
+ <!-- <%@include file="navbar.jsp" %>  -->
+<div th:replace="navbar :: menu"></div>
+<div class="container p-5">
+  <div class="text-center"><h4>Completed Blood Requests</h4></div>
+   <table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+         <th scope="col">Email</th>
+          <th scope="col">Blood Group</th>
+          <th scope="col">Contact Number</th>
+          
+    </tr>
+  </thead>
+  <tbody style="background-color:white">
+  
+     
+    <tr th:each="bloodRequest : ${list}">
+       
+      <td th:text="${bloodRequest.id}">  </td>
+       <td th:text="${bloodRequest.fname}"> </td>
+       <td th:text="${bloodRequest.lname}"></td>
+      <td th:text="${bloodRequest.email}"></td>
+       <td th:text="${bloodRequest.bloodgrp}"></td>
+        <td th:text="${bloodRequest.cno}"></td>
+         
+         
+    </tr>
+     
+  </tbody>
+</table>
+
+ 
+</div>
+</body>
+</html>
